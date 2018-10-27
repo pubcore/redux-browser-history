@@ -1,0 +1,58 @@
+{
+  "scripts": {
+    "test": "nyc --reporter=text mocha --globals global --inspect  --require ./test/globals --require babel-register --require source-map-support --recursive",
+    "build": "babel src --out-dir js",
+    "prepare": "npm run build && webpack --optimize-minimize",
+    "watch": "babel --watch src --out-dir js",
+    "coverage": "nyc report --reporter=text-lcov"
+  },
+  "main": "js/index.js",
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      "env"
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
+  },
+  "name": "@pubcore/redux-browser-history",
+  "version": "1.0.0",
+  "description": "maintain browser URI in state in redux style",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pubcore/redux-browser-history.git"
+  },
+  "keywords": [
+    "redux",
+    "history-api"
+  ],
+  "author": "pubcore",
+  "bugs": {
+    "url": "https://github.com/pubcore/redux-browser-history/issues"
+  },
+  "homepage": "https://github.com/pubcore/redux-browser-history#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.2.0",
+    "eslint": "^5.8.0",
+    "eslint-plugin-mocha": "^5.2.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "lodash.get": "^4.4.2",
+    "qs": "^6.5.2",
+    "redux-create-reducer": "^1.1.3",
+    "window-or-global": "^1.0.1"
+  }
+}
