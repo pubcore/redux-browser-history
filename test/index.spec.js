@@ -59,12 +59,23 @@ describe('redux based read/write of browser URI', () => {
 				subPath:'/pageTwo'
 			}
 		}})
+		//update the same
 		dispatch(updateUriAction({subPath:'/pageTwo', query:{foo:'bar'}}))
 		expect(getState()).to.deep.equal({ui:{
 			uri:{
 				basePath:'/base',
 				query:{foo:'bar'},
 				subPath:'/pageTwo'
+			}
+		}})
+	})
+	it('Offers param "replace", if set true histories "replaceState" is used', () => {
+		dispatch(updateUriAction({subPath:'/pageOne', query:{}, replace:true}))
+		expect(getState()).to.deep.equal({ui:{
+			uri:{
+				basePath:'/base',
+				query:{},
+				subPath:'/pageOne'
 			}
 		}})
 	})

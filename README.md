@@ -4,6 +4,14 @@ Maintain browser's URI in state based on redux
 * Knowledge of redux-actions and -reducers
 * thunk-middleware is applied to redux-store
 
+## Features
+* Supports arbitrary sliceKey (default is "uri")  
+* Supports base-path, initialized by a carrier on import of reducer  
+* Updates state, if browser-uri changes  
+* Offers action to update browser's URI and/or query params  
+* Offers param "replace", if true history's "replaceState" is used.
+* Adds origin if needed for location.href  
+
 ## Example
 
 #### State
@@ -59,3 +67,6 @@ Maintain browser's URI in state based on redux
 
 	// to remove some query params, use "undefined"
 	// updateUriAction({ query:{..current, foo: undefined, bar: undefined} })
+
+	// to use history's replaceState (instead of pushState)
+	// updateUriAction({ query:{}, replace:true})
