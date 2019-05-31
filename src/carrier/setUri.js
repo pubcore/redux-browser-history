@@ -3,15 +3,18 @@ import root from 'window-or-global'
 
 export default ({basePath, subPath, query, replace}) => {
 	var q = qs.stringify(query),
-		uri = basePath + subPath + (q ? '?' + q : ''),
-		changeState = replace ? root.history.pushState : root.history.replaceState
+		uri = basePath + subPath + (q ? '?' + q : '')
 
 	if(uri !== root.location.pathname + root.location.search) {
 		try {
-			changeState(null, '', uri)
+			replace ?
+				root.history.replaceState(null, '', uri)
+				: root.history.pushState(null, '', uri)
 		} catch(e) {
 			// Firefox needs the origin prefixed in some cases.
-			changeState(null, '', root.location.origin + uri)
+			replace ?
+				root.history.replaceState(null, '', root.location.origin + uri)
+				: root.history.pushState(null, '', root.location.origin + uri)
 		}
 	}
 }
