@@ -17,7 +17,7 @@
     ]
   },
   "name": "@pubcore/redux-browser-history",
-  "version": "1.1.2",
+  "version": "1.1.1",
   "description": "maintain browser URI in state in redux style",
   "directories": {
     "test": "test"
